@@ -2,7 +2,7 @@ To connect to mysql workbench
 
 
 
-Import sql to workbench
+Export sql to workbench
 1. Run as administrator the workbench
 2. click the server 
 3. click data export
