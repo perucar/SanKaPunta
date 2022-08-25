@@ -12,3 +12,8 @@ Import sql to workbench
 2. go to server
 3. click data import
 4. click okay
+
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
+
