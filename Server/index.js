@@ -13,4 +13,5 @@ app.get('/', (req, res) => {
     res.send("Hello World");
 });
 
+// npm start
 app.listen(PORT, () => {console.log(`Server Listen to port httm://localhost:${PORT}`)});
