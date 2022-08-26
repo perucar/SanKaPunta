@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Button, ButtonGroup, Form, Spinner } from "react-bootstrap";
 
 function AddRegions(props) {
-    const {handleChange, handleClose, open} = props;
+    const {handleClose, open} = props;
     const [data, setData] = useState({
         region_id: "",
         name: "",
@@ -12,12 +12,16 @@ function AddRegions(props) {
         date_updated: "",
         updated_by: ""
     })
-    console.log(data)
+    console.log(data);
+
+    const handleChange = (event) => {
+        setData({...data, [event.target.name]: event.target.value})
+    }
     
 
     return (    
     <Dialog onClose={handleClose} open={open}>
-        <DialogTitle>Edit region</DialogTitle>
+        <DialogTitle>Add region</DialogTitle>
         <DialogContent>
         <Form>
             <Form.Row sx={{width: "100%"}}>

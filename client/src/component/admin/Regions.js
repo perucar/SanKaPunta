@@ -1,7 +1,7 @@
 import { Delete, Edit } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
 import { useState } from "react";
-import { Button, Row, Table } from "react-bootstrap";
+import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
 import AddRegions from "./AddRegions";
 import DeleteRegions from "./DeleteRegions";
@@ -47,9 +47,15 @@ function Regions() {
 
     return ( 
         <>
-        <h1>Regions</h1>
+        
         <Row>
-      <Button variant="primary" onClick={handleAddOpen}>Add</Button>
+            <Col style={{paddingBottom: '1em'}}>
+            <h2 style={{padding: 0}}>Regions</h2>
+            </Col>
+            <Col>
+            <Button variant="primary" onClick={handleAddOpen}>Add</Button>
+            </Col>
+     
     </Row>
 
         <Table striped bordered hover>

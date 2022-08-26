@@ -7,12 +7,13 @@ function Dashboard() {
 
   return (
     <>
+    <Container>
     <Row>
       <h1>Dashboard</h1>
     </Row>
 
-    <Row>
-      <Nav variant="pills" defaultActiveKey="regions">
+    <Row className="mb-4">
+      <Nav style={{paddingLeft: '1em', backgroundColor: 'lightseagreen', paddingTop: '1em', paddingBottom: '1em'}} variant="pills" defaultActiveKey="regions">
         <Nav.Item>
           <Nav.Link eventKey="regions" onClick={() => {history("regions")}}>Regions</Nav.Link>
         </Nav.Item>
@@ -30,7 +31,9 @@ function Dashboard() {
      
     
 
-    <Outlet />
+    <Outlet />  
+    </Container>
+    
     
 
 
