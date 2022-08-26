@@ -52,8 +52,8 @@ function Regions() {
             <Col style={{paddingBottom: '1em'}}>
             <h2 style={{padding: 0}}>Regions</h2>
             </Col>
-            <Col>
-            <Button variant="primary" onClick={handleAddOpen}>Add</Button>
+            <Col className="d-flex justify-content-end">
+            <Button style={{height: '3em'}} variant="primary" onClick={handleAddOpen}>Add</Button>
             </Col>
      
     </Row>

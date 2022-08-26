@@ -13,7 +13,7 @@ function Dashboard() {
     </Row>
 
     <Row className="mb-4">
-      <Nav style={{paddingLeft: '1em', backgroundColor: 'lightseagreen', paddingTop: '1em', paddingBottom: '1em'}} variant="pills" defaultActiveKey="regions">
+      <Nav style={{paddingLeft: '1em',  paddingTop: '1em', paddingBottom: '1em'}} variant="pills" defaultActiveKey="regions">
         <Nav.Item>
           <Nav.Link eventKey="regions" onClick={() => {history("regions")}}>Regions</Nav.Link>
         </Nav.Item>
