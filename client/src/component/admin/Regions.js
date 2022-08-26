@@ -3,11 +3,14 @@ import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { Table } from "react-bootstrap";
 import mockData from '../mockData';
+import DeleteRegions from "./DeleteRegions";
 import EditRegionsModal from "./EditRegions";
 
 function Regions() {
 
     const [editOpen, setEditOpen] = useState(false);
+    const [deleteOpen, setDeleteOpen] = useState(false);
+
     const [data, setData] = useState(mockData);
     const [currentData, setCurrentData] = useState(undefined);
 
@@ -17,6 +20,14 @@ function Regions() {
 
     const handleEditOpen = () => {
         setEditOpen(true);
+    }
+
+    const handleDeleteOpen = () => {
+        setDeleteOpen(true);
+    }
+
+    const handleDeleteClose = () => {
+        setDeleteOpen(false);
     }
 
     const handleChange = (event) => {
@@ -59,7 +70,10 @@ function Regions() {
                         </IconButton>
                     </td>
 
-                    <td><IconButton aria-label="edit" color="primary" >
+                    <td><IconButton aria-label="edit" color="primary" onClick={() => {
+                        handleDeleteOpen();
+                        setCurrentData(region);
+                    }} >
                         <Delete />
                         </IconButton>
                     </td>
@@ -70,6 +84,7 @@ function Regions() {
         </Table>
 
         <EditRegionsModal handleClose={handleEditClose} open={editOpen} data={currentData} handleChange={handleChange} />
+        <DeleteRegions handleClose={handleDeleteClose} open={deleteOpen} data={currentData} />
         </>
      );
 }

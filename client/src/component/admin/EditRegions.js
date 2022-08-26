@@ -1,6 +1,6 @@
-import { Dialog, DialogTitle } from "@mui/material";
+import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { useEffect, useState } from "react";
-import { Button, Form, Spinner } from "react-bootstrap";
+import { Button, ButtonGroup, Form, Spinner } from "react-bootstrap";
 
 function EditRegionsModal(props) {
     const {handleChange, handleClose, open, data} = props;
@@ -10,8 +10,9 @@ function EditRegionsModal(props) {
     return ( 
     <Dialog onClose={handleClose} open={open}>
         <DialogTitle>Edit region</DialogTitle>
+        <DialogContent>
         <Form>
-            <Form.Row>
+            <Form.Row sx={{width: "100%"}}>
             <Form.Group className="mb-3" controlId="formRegion">
             
         
@@ -47,6 +48,17 @@ function EditRegionsModal(props) {
             </Form.Row>
         
     </Form>
+        </DialogContent>
+
+        <DialogActions>
+            <Button variant="primary" onClick={handleClose}>
+                Save
+            </Button>
+            <Button variant="primary" onClick={handleClose}>
+                Close
+            </Button>
+        </DialogActions>
+        
     </Dialog>
      );
 }
