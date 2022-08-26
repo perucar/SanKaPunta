@@ -3,26 +3,20 @@ const router = express.Router();
 const getConnection = require("../utils/db_connection");
 const data = require("../utils/testData/regions");
 
-const dbFunction = (query) => {
-  let result = [];
-  getConnection(async function (err, con) {
-    if (err) {
-      console.log(err);
-    }
-    await con.query(query, function (err, regions) {
-      result = Object.values(JSON.parse(JSON.stringify(regions)));
-      //console.log(result);
-      con.release();
-      return result;
-    });
-  });
-  //console.log(result);
-  return result;
-};
+// const dbFunction = (query) =>
+// getConnection(async function (err, con) {
+//   if (err) {
+//     console.log(err);
+//   }
+//   await con.query(query, function (err, regions) {
+//     con.release();
+//     return regions;
+//   });
+// });
 
 router.get("/regions", (req, res, next) => {
   let query = `SELECT * FROM regions`;
-
+  // res.json(dbFunction(query));
   getConnection(async function (err, con) {
     if (err) {
       console.log(err);

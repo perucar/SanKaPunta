@@ -6,7 +6,7 @@ import ProvinceInfo from './component/admin/ProvinceInfo';
 import Provinces from './component/admin/Provinces';
 import Regions from './component/admin/Regions';
 import LandingPage from'./component/landing/LandingPage'
-
+import Profile from'./component/profile/Profile'
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +19,7 @@ function App() {
       
     </Route>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/profile" element={<Profile />} />
     </Routes>
     
     </BrowserRouter>
