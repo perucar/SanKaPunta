@@ -28,9 +28,7 @@ function Dashboard() {
       </Nav>
     </Row>
      
-    <Row>
-      <Button variant="primary">Add</Button>
-    </Row>
+    
 
     <Outlet />
     
