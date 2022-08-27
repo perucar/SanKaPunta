@@ -1,7 +1,14 @@
-import express from  'express';
-import bodyParser from 'body-parser';
+const express = require("express");
+const bodyParser = require("body-parser");
 
-import cors from 'cors';
+const cors = require("cors");
+const connDb = require("./utils/db_connection.js");
+
+const regionRouter = require("./routes/regions.js");
+const provincesRouter = require("./routes/provinces.js");
+const categoriesRouter = require("./routes/categories.js");
+
+console.log(connDb);
 
 const app = express();
 const PORT = 5000;
@@ -9,9 +16,12 @@ const PORT = 5000;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.get('/', (req, res) => {
-    res.send("Hello World");
-});
+// Routes declarations
+app.use("/", regionRouter);
+app.use("/", provincesRouter);
+app.use("/", categoriesRouter);
 
 // npm start
-app.listen(PORT, () => {console.log(`Server Listen to port httm://localhost:${PORT}`)});
+app.listen(PORT, () => {
+  console.log(`Server Listen to port http://localhost:${PORT}`);
+});
