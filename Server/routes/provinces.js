@@ -15,7 +15,7 @@ router.get('/provinces', (req, res, next) => {
             message: "OK!",
           };
           con.release();
-          res.json({...results, message});
+          res.json(results);
         });
     });
 });
@@ -32,7 +32,7 @@ router.get('/provinces/:id', (req, res, next) => {
         message: "OK!",
       };
       con.release();
-      res.json({...results, message});
+      res.json(results);
     });
   });
 });

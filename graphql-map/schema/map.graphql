@@ -1,0 +1,16 @@
+type Province {
+    province_id: ID!
+    region_id: Int
+    name: String
+    latitude: Float! 
+    longitude: Float!
+    created_by: String
+    date_created: String
+    update_by: String
+    date_updated: String
+}
+
+type Query {
+    getProvinces: [Province!]
+    getProvinceById(id: ID!): Province
+}
