@@ -7,6 +7,7 @@ const connDb = require("./utils/db_connection.js");
 const regionRouter = require("./routes/regions.js");
 const provincesRouter = require("./routes/provinces.js");
 const categoriesRouter = require("./routes/categories.js");
+const userRouter = require('./routes/usersRoute');
 
 console.log(connDb);
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use("/", regionRouter);
 app.use("/", provincesRouter);
 app.use("/", categoriesRouter);
+app.use("/users", userRouter);
 
 // npm start
 app.listen(PORT, () => {
