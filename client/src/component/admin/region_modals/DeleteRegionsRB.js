@@ -16,7 +16,7 @@ function DeleteRegions(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={handleClose}>
+          <Button variant="danger" onClick={handleClose}>
             Delete
           </Button>
         </Modal.Footer>

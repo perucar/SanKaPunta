@@ -1,0 +1,25 @@
+.btn-primary {
+    background-color: #136912 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+}
+
+.nav-link {
+    color: #136912 !important;
+}
+
+.nav-link.active {
+    color: white !important;
+    background-color: #136912 !important;
+
+}

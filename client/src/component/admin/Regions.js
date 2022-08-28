@@ -8,6 +8,7 @@ import AddRegionsRB from "./region_modals/AddRegionsRB";
 import DeleteRegions from "./region_modals/DeleteRegionsRB";
 import EditRegionsModal from "./EditRegions";
 import EditRegions from "./region_modals/EditRegionsRB";
+import '../../css/globalStyles.css';
 
 function Regions() {
 
@@ -58,8 +59,9 @@ function Regions() {
             <Button style={{height: '3em'}} variant="primary" onClick={handleAddOpen}>Add</Button>
             </Col>
      
-    </Row>
+        </Row>
 
+        <Row>
         <Table striped bordered hover>
           <thead>
             <tr>
@@ -83,7 +85,7 @@ function Regions() {
                     <td>{region.date_created}</td>
                     <td>{region.updated_by}</td>
                     <td>{region.date_updated}</td>
-                    <td><IconButton aria-label="edit" color="primary" onClick={() => {
+                    <td><IconButton aria-label="edit" color="success" className="IconButton" onClick={() => {
                         handleEditOpen();
                         setCurrentData(region)
                         }} >
@@ -91,7 +93,7 @@ function Regions() {
                         </IconButton>
                     </td>
 
-                    <td><IconButton aria-label="edit" color="primary" onClick={() => {
+                    <td><IconButton aria-label="edit" color="error" className="IconButton" onClick={() => {
                         handleDeleteOpen();
                         setCurrentData(region);
                     }} >
@@ -103,6 +105,9 @@ function Regions() {
            })}
           </tbody>
         </Table>
+        </Row>
+
+        
 
         {/* For testing - migration from MUI to React Bootstrap */}
         <AddRegionsRB handleClose={handleAddClose} show={addOpen} />

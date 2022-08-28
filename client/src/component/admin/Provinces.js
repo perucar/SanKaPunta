@@ -4,10 +4,14 @@ import { useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
 import AddRegions from "./AddRegions";
-import DeleteRegions from "./DeleteRegions";
+import AddRegionsRB from "./region_modals/AddRegionsRB";
+import DeleteRegions from "./region_modals/DeleteRegionsRB";
 import EditRegionsModal from "./EditRegions";
+import EditRegions from "./region_modals/EditRegionsRB";
+
 
 function Provinces() {
+
     const [editOpen, setEditOpen] = useState(false);
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [addOpen, setAddOpen] = useState(false);
@@ -49,7 +53,7 @@ function Provinces() {
         
         <Row>
             <Col style={{paddingBottom: '1em'}}>
-            <h2 style={{padding: 0}}>Provinces</h2>
+            <h2 style={{padding: 0}}>Provinces/Cities</h2>
             </Col>
             <Col className="d-flex justify-content-end">
             <Button style={{height: '3em'}} variant="primary" onClick={handleAddOpen}>Add</Button>
@@ -101,9 +105,16 @@ function Provinces() {
           </tbody>
         </Table>
 
-        <EditRegionsModal handleClose={handleEditClose} open={editOpen} data={currentData} handleChange={handleChange} />
-        <DeleteRegions handleClose={handleDeleteClose} open={deleteOpen} data={currentData} />
-        <AddRegions handleClose={handleAddClose} open={addOpen} />
+        {/* For testing - migration from MUI to React Bootstrap */}
+        <AddRegionsRB handleClose={handleAddClose} show={addOpen} />
+
+        <EditRegions handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} />
+        <DeleteRegions handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
+        
+        {/*
+                <AddRegions handleClose={handleAddClose} open={addOpen} />
+
+         */}
         </>
      );
 }
