@@ -16,6 +16,7 @@ function App() {
       <Route path="provinces" element={<Provinces />} />
       <Route path="province-info" element={<ProvinceInfo />} />
       <Route path="categories" element={<Category />} />
+      <Route path="" element={<Regions />} />
       
     </Route>
       <Route path="/" element={<LandingPage />} />
