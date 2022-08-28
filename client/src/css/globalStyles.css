@@ -21,5 +21,8 @@ h5 {
 .nav-link.active {
     color: white !important;
     background-color: #136912 !important;
+}
 
+td {
+    vertical-align: middle;
 }
