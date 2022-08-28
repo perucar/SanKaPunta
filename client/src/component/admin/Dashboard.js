@@ -1,5 +1,5 @@
-import { Button, Container, Nav, Row, Table } from "react-bootstrap";
-import { Link, Outlet, useNavigate } from "react-router-dom";
+import { Container, Nav, Row } from "react-bootstrap";
+import { Outlet, useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const history = useNavigate();

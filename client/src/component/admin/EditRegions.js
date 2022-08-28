@@ -1,6 +1,5 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Form, Spinner } from "react-bootstrap";
+import { Button, Form, Spinner } from "react-bootstrap";
 
 function EditRegionsModal(props) {
     const {handleChange, handleClose, open, data} = props;

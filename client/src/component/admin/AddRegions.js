@@ -1,6 +1,6 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Form, Spinner } from "react-bootstrap";
+import { useState } from "react";
+import { Button, Form } from "react-bootstrap";
 
 function AddRegions(props) {
     const {handleClose, open} = props;

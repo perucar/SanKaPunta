@@ -1,9 +1,8 @@
 import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import { useEffect, useState } from "react";
-import { Button, ButtonGroup, Form, Spinner } from "react-bootstrap";
+import { Button } from "react-bootstrap";
 
 function DeleteRegions(props) {
-    const {handleChange, handleClose, open, data} = props;
+    const { handleClose, open, data } = props;
     console.log(data)
     
 
