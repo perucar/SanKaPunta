@@ -3,10 +3,8 @@ import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
-import AddRegions from "./AddRegions";
 import AddRegionsRB from "./region_modals/AddRegionsRB";
 import DeleteRegions from "./region_modals/DeleteRegionsRB";
-import EditRegionsModal from "./EditRegions";
 import EditRegions from "./region_modals/EditRegionsRB";
 import '../../css/globalStyles.css';
 
@@ -61,7 +59,7 @@ function Regions() {
      
         </Row>
 
-        <Row>
+        <Row className="table-row">
         <Table striped bordered hover>
           <thead>
             <tr>

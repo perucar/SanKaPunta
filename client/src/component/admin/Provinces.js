@@ -64,7 +64,7 @@ function Provinces() {
      
         </Row>
 
-        <Row>
+        <Row className="table-row">
         <Table striped bordered hover>
           <thead>
             <tr>
