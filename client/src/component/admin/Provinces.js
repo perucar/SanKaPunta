@@ -8,7 +8,10 @@ import AddRegionsRB from "./region_modals/AddRegionsRB";
 import DeleteRegions from "./region_modals/DeleteRegionsRB";
 import EditRegionsModal from "./EditRegions";
 import EditRegions from "./region_modals/EditRegionsRB";
-
+import '../../css/globalStyles.css';
+import AddProvince from "./province_modals/AddProvince";
+import EditProvince from "./province_modals/EditProvince";
+import DeleteProvince from "./province_modals/DeleteProvince";
 
 function Provinces() {
 
@@ -59,13 +62,17 @@ function Provinces() {
             <Button style={{height: '3em'}} variant="primary" onClick={handleAddOpen}>Add</Button>
             </Col>
      
-    </Row>
+        </Row>
 
+        <Row>
         <Table striped bordered hover>
           <thead>
             <tr>
+              <th>Province ID</th>
               <th>Region ID</th>
-              <th>Region Name</th>
+              <th>Name</th>
+              <th>Longitude</th>
+              <th>Latitude</th>
               <th>Created by</th>
               <th>Date Created</th>
               <th>Updated by</th> 
@@ -75,26 +82,29 @@ function Provinces() {
             </tr>
           </thead>
           <tbody>
-           {data.regions.map((region) => {
+           {data.provinces.map((province) => {
             return (
-                <tr key={region.region_id}>
-                    <td>{region.region_id}</td>
-                    <td>{region.name}</td>
-                    <td>{region.created_by}</td>
-                    <td>{region.date_created}</td>
-                    <td>{region.updated_by}</td>
-                    <td>{region.date_updated}</td>
-                    <td><IconButton aria-label="edit" color="primary" onClick={() => {
+                <tr key={province.province_id}>
+                  <td>{province.province_id}</td>
+                    <td>{province.region_id}</td>
+                    <td>{province.name}</td>
+                    <td>{province.latitude}</td>
+                    <td>{province.longitude}</td>
+                    <td>{province.created_by}</td>
+                    <td>{province.date_created}</td>
+                    <td>{province.updated_by}</td>
+                    <td>{province.date_updated}</td>
+                    <td><IconButton aria-label="edit" color="success" className="IconButton" onClick={() => {
                         handleEditOpen();
-                        setCurrentData(region)
+                        setCurrentData(province)
                         }} >
                         <Edit />
                         </IconButton>
                     </td>
 
-                    <td><IconButton aria-label="edit" color="primary" onClick={() => {
+                    <td><IconButton aria-label="edit" color="error" className="IconButton" onClick={() => {
                         handleDeleteOpen();
-                        setCurrentData(region);
+                        setCurrentData(province);
                     }} >
                         <Delete />
                         </IconButton>
@@ -104,12 +114,15 @@ function Provinces() {
            })}
           </tbody>
         </Table>
+        </Row>
+
+        
 
         {/* For testing - migration from MUI to React Bootstrap */}
-        <AddRegionsRB handleClose={handleAddClose} show={addOpen} />
+        <AddProvince regions={data.regions} handleClose={handleAddClose} show={addOpen} />
 
-        <EditRegions handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} />
-        <DeleteRegions handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
+        <EditProvince handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} />
+        <DeleteProvince handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
         
         {/*
                 <AddRegions handleClose={handleAddClose} open={addOpen} />

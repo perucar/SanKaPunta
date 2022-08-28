@@ -14,8 +14,8 @@ function Dashboard() {
       <h1>Dashboard</h1>
     </Row>
 
-    <Row className="mt-5" >
-      <Col sm={{span: 12}} lg={{span: 2}} style={{borderRight: 'solid 1px gray'}}>
+    <Row className="mt-2" >
+      <Col sm={{span: 12}} lg={{span: 2}}>
         <Nav className="flex-column-lg" style={{paddingLeft: '1em',  paddingTop: '1em', paddingBottom: '1em'}} variant="pills" defaultActiveKey="regions">
           <Nav.Item>
             <Nav.Link eventKey="regions" onClick={() => {history("regions")}}>Regions</Nav.Link>

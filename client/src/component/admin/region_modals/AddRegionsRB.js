@@ -1,6 +1,5 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
 import { useState } from "react";
-import { Button, CloseButton, Form, Modal } from "react-bootstrap";
+import { Button, Form, Modal } from "react-bootstrap";
 
 function AddRegionsRB(props) {
     const { show, handleClose } = props;
