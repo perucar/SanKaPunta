@@ -12,7 +12,7 @@ function AddRegions(props) {
         date_updated: "",
         updated_by: ""
     })
-    console.log(data);
+    //console.log(data);
 
     const handleChange = (event) => {
         setData({...data, [event.target.name]: event.target.value})

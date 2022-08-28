@@ -4,8 +4,10 @@ import { useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
 import AddRegions from "./AddRegions";
-import DeleteRegions from "./DeleteRegions";
+import AddRegionsRB from "./region_modals/AddRegionsRB";
+import DeleteRegions from "./region_modals/DeleteRegionsRB";
 import EditRegionsModal from "./EditRegions";
+import EditRegions from "./region_modals/EditRegionsRB";
 
 function Regions() {
 
@@ -102,9 +104,16 @@ function Regions() {
           </tbody>
         </Table>
 
-        <EditRegionsModal handleClose={handleEditClose} open={editOpen} data={currentData} handleChange={handleChange} />
-        <DeleteRegions handleClose={handleDeleteClose} open={deleteOpen} data={currentData} />
-        <AddRegions handleClose={handleAddClose} open={addOpen} />
+        {/* For testing - migration from MUI to React Bootstrap */}
+        <AddRegionsRB handleClose={handleAddClose} show={addOpen} />
+
+        <EditRegions handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} />
+        <DeleteRegions handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
+        
+        {/*
+                <AddRegions handleClose={handleAddClose} open={addOpen} />
+
+         */}
         </>
      );
 }

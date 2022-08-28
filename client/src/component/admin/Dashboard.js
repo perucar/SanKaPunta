@@ -1,5 +1,6 @@
 import { Container, Nav, Row } from "react-bootstrap";
 import { Outlet, useNavigate } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 function Dashboard() {
   const history = useNavigate();
@@ -7,13 +8,14 @@ function Dashboard() {
 
   return (
     <>
+    <Navbar />
     <Container>
     <Row>
       <h1>Dashboard</h1>
     </Row>
 
     <Row className="mb-4">
-      <Nav style={{paddingLeft: '1em',  paddingTop: '1em', paddingBottom: '1em'}} variant="pills" defaultActiveKey="regions">
+      <Nav style={{paddingLeft: '1em',  paddingTop: '1em', paddingBottom: '1em'}} variant="tabs" defaultActiveKey="regions">
         <Nav.Item>
           <Nav.Link eventKey="regions" onClick={() => {history("regions")}}>Regions</Nav.Link>
         </Nav.Item>
