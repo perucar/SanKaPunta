@@ -116,7 +116,7 @@ function ProvinceInfo() {
         
 
         {/* For testing - migration from MUI to React Bootstrap */}
-        <AddProvinceInfo province={data.provinces} handleClose={handleAddClose} show={addOpen} />
+        <AddProvinceInfo allData={data} handleClose={handleAddClose} show={addOpen} />
 
         <EditRegions handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} />
         <DeleteRegions handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />

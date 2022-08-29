@@ -22,10 +22,11 @@ function AddProvince(props) {
         setData({...data, [event.target.name]: event.target.value})
     }
 
-    /* Test fields if they are controlled */
+    /* Test fields if they are controlled 
     useEffect(() => {
         console.log(data);
     })
+    */
     
     return ( 
         <>

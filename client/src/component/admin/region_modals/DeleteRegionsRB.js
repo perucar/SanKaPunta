@@ -1,10 +1,7 @@
-import { Dialog, DialogActions, DialogContent, DialogTitle } from "@mui/material";
-import { Button, Form, Modal, Spinner } from "react-bootstrap";
+import { Button, Modal } from "react-bootstrap";
 
 function DeleteRegions(props) {
-    const {handleChange, handleClose, show, data} = props;
-    console.log(data)
-    
+    const {handleChange, handleClose, show, data} = props;    
 
     return ( 
         <Modal show={show} onHide={handleClose} centered>

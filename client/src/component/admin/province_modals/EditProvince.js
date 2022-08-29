@@ -2,9 +2,7 @@ import { Button, Form, Modal, Spinner } from "react-bootstrap";
 
 function EditProvince(props) {
     const {handleChange, handleClose, show, data} = props;
-    console.log(data)
-    
-
+  
     return ( 
         <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton={false}>
