@@ -1,7 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const getConnection = require("../utils/db_connection");
-const data = require("../utils/testData/regions");
 
 router.get("/categories", (req, res, next) => {
   try {
