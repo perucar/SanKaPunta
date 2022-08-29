@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { /*useEffect,*/ useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 function AddProvince(props) {

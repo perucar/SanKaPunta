@@ -1,7 +1,7 @@
 import { Button, Modal } from "react-bootstrap";
 
 function DeleteProvinceInfo(props) {
-    const {handleClose, show, data} = props;
+    const {handleClose, show/*, data*/} = props;
     
     return ( 
         <Modal show={show} onHide={handleClose} centered>

@@ -1,7 +1,7 @@
 import { Button, Modal } from "react-bootstrap";
 
 function DeleteRegions(props) {
-    const {handleChange, handleClose, show, data} = props;    
+    const {/*handleChange,*/ handleClose, show, /*data*/} = props;    
 
     return ( 
         <Modal show={show} onHide={handleClose} centered>
