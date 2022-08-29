@@ -5,7 +5,8 @@ import Dashboard from './component/admin/Dashboard';
 import ProvinceInfo from './component/admin/ProvinceInfo';
 import Provinces from './component/admin/Provinces';
 import Regions from './component/admin/Regions';
-import LandingPage from'./component/landing/LandingPage'
+import LandingPage from './component/landing/LandingPage';
+import MainPage from './component/main/MainPage';
 
 function App() {
   return (
@@ -19,7 +20,9 @@ function App() {
       
     </Route>
       <Route path="/" element={<LandingPage />} />
+      <Route path="/main" element={<MainPage />} />
     </Routes>
+      
     
     </BrowserRouter>
   );
