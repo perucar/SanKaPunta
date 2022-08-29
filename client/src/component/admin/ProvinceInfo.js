@@ -3,12 +3,10 @@ import { IconButton } from "@mui/material";
 import { useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
-import AddRegionsRB from "./region_modals/AddRegionsRB";
-import DeleteRegions from "./region_modals/DeleteRegionsRB";
-import EditRegions from "./region_modals/EditRegionsRB";
 import '../../css/globalStyles.css';
 import AddProvinceInfo from "./province_info_modals/AddProvinceInfo";
 import EditProvinceInfo from "./province_info_modals/EditProvinceInfo";
+import DeleteProvinceInfo from "./province_info_modals/DeleteProvinceInfo";
 
 function ProvinceInfo() {
 
@@ -120,12 +118,7 @@ function ProvinceInfo() {
         <AddProvinceInfo allData={data} handleClose={handleAddClose} show={addOpen} />
 
         <EditProvinceInfo handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} allData={data} />
-        <DeleteRegions handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
-        
-        {/*
-                <AddRegions handleClose={handleAddClose} open={addOpen} />
-
-         */}
+        <DeleteProvinceInfo handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
         </>
      );
 }
