@@ -1,6 +1,6 @@
 import { Delete, Edit } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
 import AddRegionsRB from "./region_modals/AddRegionsRB";
@@ -14,8 +14,13 @@ function Regions() {
     const [deleteOpen, setDeleteOpen] = useState(false);
     const [addOpen, setAddOpen] = useState(false);
 
-    const [data, setData] = useState(mockData);
-    const [currentData, setCurrentData] = useState(undefined);
+    const [data, setData] = useState(mockData.regions);
+    const [currentData, setCurrentData] = useState({});
+
+    // Fetch data from DB
+    useEffect(() => {
+        fetch('http://localhost:5050/regions').then(info => info.json()).then(info => setData(info.regions))
+    },[])
 
     const handleEditClose = () => {
         setEditOpen(false);
@@ -74,7 +79,7 @@ function Regions() {
             </tr>
           </thead>
           <tbody>
-           {data.regions.map((region) => {
+           {data.map((region) => {
             return (
                 <tr key={region.region_id}>
                     <td>{region.region_id}</td>
@@ -92,8 +97,9 @@ function Regions() {
                     </td>
 
                     <td><IconButton aria-label="edit" color="error" className="IconButton" onClick={() => {
-                        handleDeleteOpen();
                         setCurrentData(region);
+                        handleDeleteOpen();
+                        
                     }} >
                         <Delete />
                         </IconButton>
