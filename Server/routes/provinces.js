@@ -90,7 +90,7 @@ router.put("/provinces", (req, res) => {
   getConnection(function (err, con) {
     const query = `
       UPDATE provinces SET name = '${req.body.name}', latitude = '${req.body.latitude}', longitude = '${req.body.longitude}', updated_by = '${req.body.updated_by}', date_updated = '${req.body.date_updated}'
-      WHERE region_id = ${req.body.id}`;
+      WHERE province_id = ${req.body.id}`;
     if (err) {
       console.log(err);
       message.message = err;
@@ -111,7 +111,7 @@ router.delete("/provinces/:id", (req, res, next) => {
     message: "",
 };
   getConnection(function (err, con) {
-    const query = `DELETE FROM provinces WHERE provinces_id = ${req.params.id} `;
+    const query = `DELETE FROM provinces WHERE province_id = ${req.params.id} `;
     if (err) {
       console.log(err);
       message.message = err;

@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const path = require("path");
 const getConnection = require('../utils/db_connection');
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -133,7 +132,7 @@ router.put('/provinceInfo/', upload.single('image'), (req, res) => {
           image = '${req.file.path}', 
           category_id ='${req.body.category_id}', 
           updated_by = '${req.body.updated_by}', 
-          date_updated) = '${req.body.date_updated}') 
+          date_updated = '${req.body.date_updated}'
           WHERE province_info_id = '${req.body.province_info_id}'`;
       if (err) {
         console.log(err);

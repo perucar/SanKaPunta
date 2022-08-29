@@ -2,6 +2,7 @@ const getConnection = require("./../utils/db_connection");
 const express = require("express");
 const router = express.Router();
 const { sign } = require("jsonwebtoken");
+const store = require('store2');
 
 const getUsers = async (req, res) => {
   let query = "SELECT * FROM users";
@@ -45,8 +46,6 @@ const loginUser = (req, res) => {
       (err, results) => {
         if (err) throw res.send(err);
 
-        console.log(results);
-
         if (results.length == 0) {
           return res.json({
             success: 0,
@@ -60,6 +59,9 @@ const loginUser = (req, res) => {
           expiresIn: "1h",
         });
 
+        store.set('userToken', jsontoken);
+        store.set('data', results);
+        
         return res.json({
           success: 1,
           message: "Login successfully",

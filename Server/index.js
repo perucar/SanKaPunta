@@ -4,6 +4,8 @@ const cors = require("cors");
 const connDb = require("./utils/db_connection.js");
 
 const categoriesRouter = require("./routes/categories.js");
+const friendsRouter = require("./routes/friends.js");
+const postRouter = require("./routes/posts.js");
 const provinceInfoRouter = require("./routes/provinceInfo.js");
 const provincesRouter = require("./routes/provinces.js");
 const regionRouter = require("./routes/regions.js");
@@ -21,6 +23,8 @@ app.use(bodyParser.urlencoded({extended: true}));
 
 // Routes declarations
 app.use("/", categoriesRouter);
+app.use("/", friendsRouter);
+app.use("/", postRouter);
 app.use("/", provincesRouter);
 app.use("/", provinceInfoRouter);
 app.use("/", regionRouter);

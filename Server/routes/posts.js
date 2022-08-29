@@ -1,6 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const path = require("path");
 const getConnection = require('../utils/db_connection');
 const multer = require("multer");
 const storage = multer.diskStorage({
@@ -88,7 +87,7 @@ router.get('/posts/:id', (req, res) => {
   }
 });
 
-router.post('/posts/', upload.single('image'), (req, res) => {
+router.post('/posts', upload.single('image'), (req, res) => {
   try {
     let message = {
       status: "200",
@@ -114,7 +113,7 @@ router.post('/posts/', upload.single('image'), (req, res) => {
   }
 });
 
-router.put('/posts/', upload.single('image'), (req, res) => {
+router.put('/posts', upload.single('image'), (req, res) => {
   try {
     let message = {
       status: "200",
@@ -122,15 +121,15 @@ router.put('/posts/', upload.single('image'), (req, res) => {
     };
     getConnection(function (err, con) {
       const query = `
-        UPDATE province_info SET  
+        UPDATE posts SET  
           province_id = '${req.body.province_id}', 
           title = '${req.body.title}', 
           description = '${req.body.description}', 
           image = '${req.file.path}', 
           category_id ='${req.body.category_id}', 
           updated_by = '${req.body.updated_by}', 
-          date_updated) = '${req.body.date_updated}') 
-          WHERE province_info_id = '${req.body.province_info_id}'`;
+          date_updated = '${req.body.date_updated}'
+          WHERE post_id = '${req.body.post_id}'`;
       if (err) {
         console.log(err);
         message.message = err;
