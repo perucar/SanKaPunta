@@ -8,6 +8,7 @@ import DeleteRegions from "./region_modals/DeleteRegionsRB";
 import EditRegions from "./region_modals/EditRegionsRB";
 import '../../css/globalStyles.css';
 import AddProvinceInfo from "./province_info_modals/AddProvinceInfo";
+import EditProvinceInfo from "./province_info_modals/EditProvinceInfo";
 
 function ProvinceInfo() {
 
@@ -44,7 +45,7 @@ function ProvinceInfo() {
 
     const handleChange = (event) => {
         setCurrentData({...currentData, [event.target.name]: event.target.value});
-        console.log(event.target.value);
+        //console.log(event.target.value);
     }
 
     return ( 
@@ -118,7 +119,7 @@ function ProvinceInfo() {
         {/* For testing - migration from MUI to React Bootstrap */}
         <AddProvinceInfo allData={data} handleClose={handleAddClose} show={addOpen} />
 
-        <EditRegions handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} />
+        <EditProvinceInfo handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} allData={data} />
         <DeleteRegions handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />
         
         {/*
