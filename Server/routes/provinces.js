@@ -20,6 +20,21 @@ router.get('/provinces', (req, res, next) => {
     });
 });
 
+router.get('/provinces/city/:city', (req, res) => {
+  let query = `SELECT * FROM provinces WHERE name = '${req.params.city}'`;
+
+  getConnection(function (err, con) {
+    if (err) {
+      console.log(err);
+    }
+    con.query(query, function (err, results) {
+      console.log(results)
+      con.release();
+      res.json(results);
+    });
+  });
+})
+
 router.get('/provinces/:id', (req, res, next) => {
   let query = `SELECT * FROM provinces WHERE province_id =  ${req.params.id}`;
   getConnection(function (err, con) {

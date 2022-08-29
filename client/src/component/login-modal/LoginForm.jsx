@@ -4,6 +4,7 @@ import logo from './../../images/ic-logo.png';
 import axios from 'axios';
 import { Navigate, useNavigate } from 'react-router-dom';
 
+
 const LoginForm = () => {
 
     const navigate = useNavigate()
@@ -31,7 +32,7 @@ const LoginForm = () => {
 
             if(data.data.success) {
                 localStorage.setItem('userToken', JSON.stringify(data.data));
-                console.log('user token', JSON.parse(localStorage.getItem('userToken')));
+               
                 // navigate('/admin');
                 // window.location.reload();
             } else {

@@ -7,6 +7,7 @@ import Provinces from './component/admin/Provinces';
 import Regions from './component/admin/Regions';
 import LandingPage from'./component/landing/LandingPage'
 import Profile from'./component/profile/Profile'
+import SignUp from './component/signup/SignUp';
 import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
 import { onError } from '@apollo/client/link/error';
 
@@ -45,6 +46,7 @@ function App() {
       </Route>
         <Route path="/" element={<LandingPage />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/signup" element={<SignUp />} />
       </Routes>
       
       </BrowserRouter>

@@ -18,7 +18,7 @@ const Maps = (props) => {
             defaultCenter={{ lat: 12.8797, lng: 121.7740 }}
             >
 
-        {provinces.getProvinces.map(val => {
+        {provinces?.map(val => {
           return (
             <Marker key={val.province_id}
             position={{ lat: val.latitude, lng: val.longitude }}

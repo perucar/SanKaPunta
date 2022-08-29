@@ -16,4 +16,5 @@ type Province {
 type Query {
     getProvinces: [Province!]
     getProvinceById(id: ID!): Province
+    getProvinceByName(city: String!): [Province]
 }
