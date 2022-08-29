@@ -53,12 +53,12 @@ const Profile = () => {
         </nav>
       </header>
       <div style={{ backgroundColor: "#eeeeee" }}>
-        <section class="vh-100 xl-3">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-4">
-                <div class="container py-5 h-100">
-                  <div class="card" style={{ width: "18rem" }}>
+        <section className="vh-100 xl-3">
+          <div className="container">
+            <div className="row">
+              <div className="col-sm-4">
+                <div className="container py-5 h-100">
+                  <div className="card" style={{ width: "18rem" }}>
                     <MDBBtn onClick={toggleShow} style={{
                         width: "9rem",
                         alignSelf: "flex-end",
@@ -82,22 +82,22 @@ const Profile = () => {
                             ></MDBBtn>
                           </MDBModalHeader>
                           <MDBModalBody>
-                          <div class="row">
-                              <div class="col-4">
+                          <div className="row">
+                              <div className="col-4">
                                 Name: 
                               </div>
-                              <div class="col-8">
+                              <div className="col-8">
                               <MDBInput placeholder='Display Name' id='form1' type='text' />
                               </div>
                             </div>
                             <div>
                             <MDBIcon icon="grip-lines" />
                             </div>
-                            <div class="row">
-                              <div class="col-4">
+                            <div className="row">
+                              <div className="col-4">
                                 Bio: 
                               </div>
-                              <div class="col-8">
+                              <div className="col-8">
                               <MDBInput placeholder='Description' id='form2' type='text' />
                               </div>
                             </div>
@@ -113,19 +113,19 @@ const Profile = () => {
                       </MDBModalDialog>
                     </MDBModal>
 
-                    <div class="card-body">
+                    <div className="card-body">
                       <img src="mariaclara.png"></img>
-                      <h5 class="card-title text-center">Maria Clara</h5>
-                      <p class="card-text text-center">Student | Manila | City Girl</p>
-                      <div class="container">
-                        <div class="row">
-                          <div class="col-sm">
+                      <h5 className="card-title text-center">Maria Clara</h5>
+                      <p className="card-text text-center">Student | Manila | City Girl</p>
+                      <div className="container">
+                        <div className="row">
+                          <div className="col-sm">
                             <MDBIcon icon="instagram" />
                           </div>
-                          <div class="col-sm">
+                          <div className="col-sm">
                             <MDBIcon icon="twitter" />
                           </div>
-                          <div class="col-sm">
+                          <div className="col-sm">
                             <MDBIcon icon="linkedin" />
                           </div>
                         </div>
@@ -134,7 +134,7 @@ const Profile = () => {
                   </div>
                 </div>
               </div>
-              <div class="col-sm-8 mt-5">
+              <div className="col-sm-8 mt-5">
                 <MDBTabs className="mb-3">
                   <MDBTabsItem>
                     <MDBTabsLink
@@ -156,8 +156,8 @@ const Profile = () => {
                 </MDBTabs>
                 <MDBTabsContent style={{ backgroundColor: "#FFFFFF"}}>
                   <MDBTabsPane show={basicActive === "tab1"}>
-                    <div class="row">
-                      <div class="col sm-4 mb-2">
+                    <div className="row">
+                      <div className="col sm-4 mb-2">
                         <Button
                           className="pull-right"
                           variant="primary"
@@ -171,11 +171,11 @@ const Profile = () => {
                       <Card.Header>
                         <MDBIcon className="pull-right" icon="heart" />
                       </Card.Header>
-                      <div class="row">
-                        <div class="col-5">
+                      <div className="row">
+                        <div className="col-5">
                           <Card.Img variant="top" src="mariaclara.png" />
                         </div>
-                        <div class="col-7">
+                        <div className="col-7">
                           <Card.Body>
                             <Card.Title>Taal Volcano</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">
@@ -203,11 +203,11 @@ const Profile = () => {
                       <Card.Header>
                         <MDBIcon className="pull-right" icon="heart" />
                       </Card.Header>
-                      <div class="row">
-                        <div class="col-5">
+                      <div className="row">
+                        <div className="col-5">
                           <Card.Img variant="top" src="" />
                         </div>
-                        <div class="col-7">
+                        <div className="col-7">
                           <Card.Body>
                             <Card.Title>Puerto Princesa River</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">
@@ -264,11 +264,11 @@ const Profile = () => {
                           />
                         </Button>
                       </Card.Header>
-                      <div class="row">
-                        <div class="col-5">
+                      <div className="row">
+                        <div className="col-5">
                           <Card.Img variant="top" src="" />
                         </div>
-                        <div class="col-7">
+                        <div className="col-7">
                           <Card.Body>
                             <Card.Title>Corregidor Island</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">
@@ -304,11 +304,11 @@ const Profile = () => {
                           />
                         </Button>
                       </Card.Header>
-                      <div class="row">
-                        <div class="col-5">
+                      <div className="row">
+                        <div className="col-5">
                           <Card.Img variant="top" src="" />
                         </div>
-                        <div class="col-7">
+                        <div className="col-7">
                           <Card.Body>
                             <Card.Title>Cebu Taoist Temple</Card.Title>
                             <Card.Subtitle className="mb-2 text-muted">
