@@ -8,6 +8,9 @@ type Province {
     date_created: String
     update_by: String
     date_updated: String
+    image: String
+    category_id: Int
+    description: String
 }
 
 type Query {

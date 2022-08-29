@@ -4,7 +4,7 @@ const getConnection = require('../utils/db_connection');
 const data = require('../utils/testData/provinces');
 
 router.get('/provinces', (req, res, next) => {
-    let query = `SELECT * FROM provinces`;
+    let query = `SELECT * FROM provinces as p INNER JOIN province_info as pi WHERE p.province_id = pi.province_id`;
     getConnection(async function (err, con) {
         if (err) {
           console.log(err);

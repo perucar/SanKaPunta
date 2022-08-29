@@ -3,10 +3,11 @@ import { Link, Outlet, useNavigate } from "react-router-dom";
 
 function Dashboard() {
   const history = useNavigate();
-
+  const user = localStorage.getItem("userToken")
 
   return (
     <>
+    {console.log('user from dashboard', user.token)}
     <Row>
       <h1>Dashboard</h1>
     </Row>

@@ -61,7 +61,8 @@ const loginUser = (req, res) => {
             return res.json({
                 success: 1,
                 message: "Login successfully",
-                user_id: results.id,
+                user_id: results.user_id,
+                data: results,
                 token: jsontoken
             });
         })
