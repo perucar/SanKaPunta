@@ -1,9 +1,10 @@
-import { /*useEffect,*/ useState } from "react";
+import { /*useEffect,*/ useEffect, useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 
 function AddProvince(props) {
     const { show, handleClose, regions } = props;
 
+    
     // State for data to be added
     const [data, setData] = useState({
         province_id: "",
@@ -17,11 +18,47 @@ function AddProvince(props) {
         updated_by: "default"
     })
 
+    useEffect(() => {
+        console.log(data)
+        console.log(parseInt(data.region_id))
+    }, [data])
+
     // Fields change handler    
     const handleChange = (event) => {
         setData({...data, [event.target.name]: event.target.value})
     }
 
+    // Handle saving changes to region item
+    const handleAddProvince = async () => {
+        const dataToSend = {
+          name: data.name,
+          region_id: parseInt(data.region_id),
+          latitude: data.latitude,
+          longitude: data.longitude,
+          updated_by: /*Change to current user*/ "default",
+          date_updated: new Date().toISOString().slice(0, 19).replace('T', ' '),
+          created_by: /*Change to current user*/ "default",
+          date_created: new Date().toISOString().slice(0, 19).replace('T', ' ')
+        }
+        const rawData = await fetch('http://localhost:5050/provinces', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dataToSend)
+        })
+  
+        const transformedData = await rawData.json();
+        console.log(transformedData);
+  
+        // Put appropriate action based on status received
+        if (transformedData.message.status === '200') {
+          window.location.reload();
+        } else {
+          alert("Item was not created. Please try again.")
+        }
+      }
+  
     /* Test fields if they are controlled 
     useEffect(() => {
         console.log(data);
@@ -71,7 +108,7 @@ function AddProvince(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => window.location.reload()}>
+          <Button variant="primary" onClick={() => handleAddProvince()}>
             Add
           </Button>
         </Modal.Footer>

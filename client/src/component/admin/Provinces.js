@@ -1,13 +1,8 @@
 import { Delete, Edit } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
-import AddRegions from "./AddRegions";
-import AddRegionsRB from "./region_modals/AddRegionsRB";
-import DeleteRegions from "./region_modals/DeleteRegionsRB";
-import EditRegionsModal from "./EditRegions";
-import EditRegions from "./region_modals/EditRegionsRB";
 import '../../css/globalStyles.css';
 import AddProvince from "./province_modals/AddProvince";
 import EditProvince from "./province_modals/EditProvince";
@@ -20,7 +15,21 @@ function Provinces() {
     const [addOpen, setAddOpen] = useState(false);
 
     const [data, setData] = useState(mockData);
-    const [currentData, setCurrentData] = useState(undefined);
+    const [currentData, setCurrentData] = useState({});
+
+     // Fetch data from DB
+     useEffect(() => {
+        fetch('http://localhost:5050/provinces').then(info => info.json()).then(info => setData({...data, provinces: info.provinces}))
+    },[])   
+
+    useEffect(() => {
+        fetch('http://localhost:5050/regions').then(info => info.json()).then(info => setData({...data, regions: info.regions}))
+    },[data.provinces])   
+    
+    // Fetch data from DB
+    useEffect(() => {
+        console.log(data)
+    },[data])   
 
     const handleEditClose = () => {
         setEditOpen(false);
@@ -50,6 +59,8 @@ function Provinces() {
         setCurrentData({...currentData, [event.target.name]: event.target.value});
         console.log(event.target.value);
     }
+
+   
 
     return ( 
         <>
