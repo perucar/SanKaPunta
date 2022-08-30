@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   MDBIcon,
+  MDBTextArea,
   MDBTabs,
   MDBTabsItem,
   MDBTabsLink,
@@ -62,7 +63,6 @@ const Profile = () => {
         </nav>
       </header>
       <body>
-      
         <div style={{ backgroundColor: "#eeeeee" }}>
           <section class="vh-100 xl-3">
             <div class="container">
@@ -200,16 +200,101 @@ const Profile = () => {
                       <MDBTabsPane show={basicActive === "tab1"}>
                         <div class="row">
                           <div class="col sm-4 mb-2">
-                            <Button
+                            <MDBBtn
                               className="pull-right"
                               variant="primary"
+                              onClick={toggleShow}
                               style={{
-                                backgroundColor: "#136912",
                                 width: "9rem",
+                                alignSelf: "flex-end",
+                                backgroundColor: "#136912",
+                                marginTop: "1rem",
+                                marginRight: "1rem",
                               }}
                             >
                               Create New
-                            </Button>
+                            </MDBBtn>
+                            <MDBModal
+                              show={basicModal}
+                              setShow={setBasicModal}
+                              tabIndex="-1"
+                            >
+                              <MDBModalDialog>
+                                <MDBModalContent>
+                                  <MDBModalHeader>
+                                    <MDBModalTitle>
+                                      Create New Post
+                                    </MDBModalTitle>
+                                    <MDBBtn
+                                      className="btn-close"
+                                      color="none"
+                                      onClick={toggleShow}
+                                    ></MDBBtn>
+                                  </MDBModalHeader>
+                                  <MDBModalBody>
+                                    <MDBInput
+                                      placeholder="Title"
+                                      id="typeText"
+                                      type="text"
+                                    />
+                                    <div class="mt-3"></div>
+                                    <MDBTextArea
+                                      placeholder="Description"
+                                      id="textAreaExample"
+                                      rows={4}
+                                    />
+                                    <div class="mt-3"></div>
+                                    <div class="container">
+                                      <div class="row">
+                                        <div class="col-sm">
+                                          <MDBBtn
+                                            style={{
+                                              backgroundColor: "#136912",
+                                              width: "4rem",
+                                            }}
+                                          >
+                                            <MDBIcon
+                                              className="text-center"
+                                              icon="image"
+                                            />
+                                          </MDBBtn>
+                                        </div>
+                                        <div class="col-sm">
+                                          <MDBBtn
+                                            style={{
+                                              backgroundColor: "#FF3D3D",
+                                              width: "4rem",
+                                            }}
+                                          >
+                                            <MDBIcon
+                                              className="text-center"
+                                              icon="map-marker"
+                                            />
+                                          </MDBBtn>
+                                        </div>
+                                        <div class="col-sm"></div>
+                                      </div>
+                                    </div>
+                                  </MDBModalBody>
+
+                                  <MDBModalFooter>
+                                    <MDBBtn
+                                      color="secondary"
+                                      onClick={toggleShow}
+                                    >
+                                      Close
+                                    </MDBBtn>
+                                    <MDBBtn
+                                      style={{
+                                        backgroundColor: "#136912",
+                                      }}
+                                    >
+                                      Add Post
+                                    </MDBBtn>
+                                  </MDBModalFooter>
+                                </MDBModalContent>
+                              </MDBModalDialog>
+                            </MDBModal>
                           </div>
                         </div>
                         <Card>
@@ -501,8 +586,13 @@ const Profile = () => {
                                   Bohol
                                 </Card.Subtitle>
                                 <Card.Text>
-                                It's magical, calm, stunning place.
-Need to climb stairs to experience stunning view from top. Around 230 steps, there is parking and toilets and some space. Police assistance also available there and ATV rentals also available to experience multiple hills and to roam around in the forest. 
+                                  It's magical, calm, stunning place. Need to
+                                  climb stairs to experience stunning view from
+                                  top. Around 230 steps, there is parking and
+                                  toilets and some space. Police assistance also
+                                  available there and ATV rentals also available
+                                  to experience multiple hills and to roam
+                                  around in the forest.
                                 </Card.Text>
                                 <Card.Subtitle className="mb-2 text-muted">
                                   May 19, 2022
