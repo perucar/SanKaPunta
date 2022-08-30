@@ -20,7 +20,7 @@ const MapPage = (props) => {
                     <h5>Region ID:<span className='card-text'>{selectedCat?.region_id}</span></h5> 
                     <h5>Category:</h5> <span className='card-text'>Test category</span>
                     <h5>Visit:</h5> <span className='card-text'><a href="#">This site</a></span>
-                    <h5>Description:</h5> <span className='card-text'>{selectedCat?.description}</span>
+                    <h5>Trivia:</h5> <span className='card-text'>{selectedCat?.description}</span>
                     
                 </div>
                 </div>

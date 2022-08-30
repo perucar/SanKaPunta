@@ -16,15 +16,17 @@ const LoginForm = () => {
 
     const [user, setUser] = useState({})
 
-
-    const handleSubmit = event => {
-        event.preventDefault();
+    useEffect(() => {
         setUser({
             username: username,
             password: password
         });
+    }, [username, password])
+    
 
-        console.log(user);
+
+    const handleSubmit = event => {
+        event.preventDefault();
 
         axios.post('http://localhost:5000/users/login', user)
         .then(data => {
@@ -33,8 +35,8 @@ const LoginForm = () => {
             if(data.data.success) {
                 localStorage.setItem('userToken', JSON.stringify(data.data));
                
-                // navigate('/admin');
-                // window.location.reload();
+                navigate('/admin');
+                window.location.reload();
             } else {
                 setPassword("");
                 setUsername("");

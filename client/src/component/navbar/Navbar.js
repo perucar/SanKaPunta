@@ -48,8 +48,15 @@ const Navbar = (props) => {
 
           { user && 
           <li className="nav-item">
-            <a className="nav-link" href="#">My Account</a>
-          </li>
+            <Link className="nav-link" to='/signup'>My Account</Link>
+          </li> 
+          }
+
+          
+        { !user && 
+          <li className="nav-item">
+            <Link className="nav-link" to="/signup">Register</Link>
+          </li> 
           }
         </ul>
       </div>

@@ -35,7 +35,7 @@ const LandingPage = () => {
    refetch({
       variables: { input: city}
     });
-    console.log("filtered city")
+    console.  log("filtered city")
 
     setCat(city);
     // alert(city);
