@@ -98,7 +98,7 @@ function AddProvinceInfo(props) {
                 <Form.Group className="mb-3" controlId="formCategory">
                     <Form.Label>Category</Form.Label>
                     <Form.Control name="category_id" as="select" aria-label="Selection for categories" value={data.category_id} onChange={(event) => {handleChange(event)}}>
-                        <option>Select a province...</option>
+                        <option>Select a category...</option>
                        {allData.categories.map(category => (
                         <option key={category.category_id} value={category.category_id}>{category.name}</option>
                        ))}
