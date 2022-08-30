@@ -1,0 +1,16 @@
+a:visited,
+a:link {
+    color: #136912;
+    text-decoration: none;
+}
+.comment{
+    float: left;
+    border-radius: 5px;
+}
+.comment h6,.comment span{
+    display: inline;
+}
+
+.comments {
+    background-color: #e9ecef;
+}

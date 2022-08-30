@@ -6,10 +6,6 @@ import ProvinceInfo from './component/admin/ProvinceInfo';
 import Provinces from './component/admin/Provinces';
 import Regions from './component/admin/Regions';
 import LandingPage from'./component/landing/LandingPage'
-import Profile from'./component/profile/Profile'
-import SignUp from './component/signup/SignUp';
-import { ApolloClient, InMemoryCache, ApolloProvider, HttpLink, from } from '@apollo/client';
-import { onError } from '@apollo/client/link/error';
 
 function App() {
 
@@ -33,25 +29,20 @@ function App() {
   })
 
   return (
-    <ApolloProvider client={client}>
-
-      <BrowserRouter>
-      <Routes>
-      <Route path="/admin" element={<Dashboard />} >
-        <Route path="regions" element={<Regions />} />
-        <Route path="provinces" element={<Provinces />} />
-        <Route path="province-info" element={<ProvinceInfo />} />
-        <Route path="categories" element={<Category />} />
-        
-      </Route>
-        <Route path="/" element={<LandingPage />} />
-        <Route path="/profile" element={<Profile />} />
-        <Route path="/signup" element={<SignUp />} />
-      </Routes>
+    <BrowserRouter>
+    <Routes>
+    <Route path="/admin" element={<Dashboard />} >
+      <Route path="regions" element={<Regions />} />
+      <Route path="provinces" element={<Provinces />} />
+      <Route path="province-info" element={<ProvinceInfo />} />
+      <Route path="categories" element={<Category />} />
       
-      </BrowserRouter>
-    </ApolloProvider>
-    );
+    </Route>
+      <Route path="/" element={<LandingPage />} />
+    </Routes>
+    
+    </BrowserRouter>
+  );
 }
 
 export default App;
