@@ -1,6 +1,6 @@
 import { Delete, Edit } from "@mui/icons-material";
 import { IconButton } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Row, Table } from "react-bootstrap";
 import mockData from '../mockData';
 import '../../css/globalStyles.css';
@@ -15,7 +15,19 @@ function ProvinceInfo() {
     const [addOpen, setAddOpen] = useState(false);
 
     const [data, setData] = useState(mockData);
-    const [currentData, setCurrentData] = useState(undefined);
+    const [currentData, setCurrentData] = useState({});
+
+    // Fetch data from DB
+    useEffect(() => {
+        fetch('http://localhost:5050/provinceInfo').then(info => info.json()).then(info => setData({...data, province_info: info.province_infos}))
+    },[])
+
+     useEffect(() => {
+        fetch('http://localhost:5050/provinces').then(info => info.json()).then(info => console.log({...data, provinces: info.provinces}))
+    },[data.province_info])
+
+    
+    
 
     const handleEditClose = () => {
         setEditOpen(false);
@@ -42,7 +54,9 @@ function ProvinceInfo() {
     }
 
     const handleChange = (event) => {
-        setCurrentData({...currentData, [event.target.name]: event.target.value});
+       
+            setCurrentData({...currentData, [event.target.name]: event.target.value});
+
         //console.log(event.target.value);
     }
 
@@ -114,8 +128,9 @@ function ProvinceInfo() {
 
         
 
-        {/* For testing - migration from MUI to React Bootstrap */}
+        {/* For testing - migration from MUI to React Bootstrap */ }
         <AddProvinceInfo allData={data} handleClose={handleAddClose} show={addOpen} />
+        
 
         <EditProvinceInfo handleClose={handleEditClose} show={editOpen} data={currentData} handleChange={handleChange} allData={data} />
         <DeleteProvinceInfo handleClose={handleDeleteClose} show={deleteOpen} data={currentData} />

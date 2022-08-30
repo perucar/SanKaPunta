@@ -22,12 +22,46 @@ function AddProvinceInfo(props) {
         setData({...data, [event.target.name]: event.target.value})
     }
 
+    // Handle saving changes to region item
+    const handleAddProvinceInfo = async () => {
+        const dataToSend = {
+            province_id: data.province_id,
+          title: data.title,
+          description: data.description,
+          image: data.image,
+          category_id: data.category_id,
+          updated_by: /*Change to current user*/ "default",
+          date_updated: new Date().toISOString().slice(0, 19).replace('T', ' '),
+          created_by: /*Change to current user*/ "default",
+          date_created: new Date().toISOString().slice(0, 19).replace('T', ' ')
+        }
+        const rawData = await fetch('http://localhost:5050/provinceInfo', {
+          method: 'POST',
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(dataToSend)
+        })
+  
+        const transformedData = await rawData.json();
+        console.log(transformedData);
+  
+        // Put appropriate action based on status received
+        if (transformedData.status === '200') {
+          window.location.reload();
+        } else {
+          alert("Item was not created. Please try again.")
+        }
+      }
+
     /* Test fields if they are controlled 
     useEffect(() => {
         console.log("alldata: ", allData);
     }) */
     
     return ( 
+        allData.provinces !== undefined ?
+        
         <>
         <Modal show={show} onHide={handleClose} centered>
         <Modal.Header closeButton={false}>
@@ -80,12 +114,16 @@ function AddProvinceInfo(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => window.location.reload()}>
+          <Button variant="primary" onClick={() => handleAddProvinceInfo()}>
             Add
           </Button>
         </Modal.Footer>
       </Modal>
-        </>
+        </>:
+
+        <Modal>
+            <Modal.Title>This is still loading</Modal.Title>
+        </Modal>
      );
 }
 

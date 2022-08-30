@@ -8,6 +8,37 @@ function EditProvinceInfo(props) {
     useEffect(() => {
         console.log(data)
     }, [data])
+    // Handle saving changes to region item
+    const handleEditProvinceInfo = async () => {
+      const dataToSend = {
+        name: data.name,
+        province_info_id: data.province_info_id,
+        province_id: data.province_id,
+        title: data.title,
+        description: data.description,
+        image: data.image,
+        category_id: data.category_id,
+        updated_by: /*Change to current user*/ "default",
+        date_updated: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      }
+      const rawData = await fetch('http://localhost:5050/provinceInfo', {
+        method: 'PUT',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataToSend)
+      })
+
+      const transformedData = await rawData.json();
+      console.log(transformedData);
+
+      // Put appropriate action based on s  tatus received
+      if (transformedData.status === '200') {
+        window.location.reload();
+      } else {
+        alert("Item did not update. Please try again.")
+      }
+    }
   
     return ( 
         <Modal show={show} onHide={handleClose} centered>
@@ -47,7 +78,7 @@ function EditProvinceInfo(props) {
             <Form.Control as="textarea" rows={10} name="description" type="text" value={data.description} onChange={(event) => {handleChange(event)}}/>
 
             <Form.Label>Image URL</Form.Label>
-            <Form.Control name="image" type="text" value={data.image} onChange={(event) => {handleChange(event)}}/>
+            <Form.Control  name="image" type="text" onChange={(event) => {handleChange(event)}}/>
 
             <Form.Group className="mb-3" controlId="formCategory">
                 <Form.Label>Category</Form.Label>
@@ -86,7 +117,7 @@ function EditProvinceInfo(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => window.location.reload()}>
+          <Button variant="primary" onClick={() => handleEditProvinceInfo()}>
             Save changes
           </Button>
         </Modal.Footer>
