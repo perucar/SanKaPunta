@@ -4,7 +4,8 @@ const con = mysql.createPool({
   connectionLimit: 100,
   host: "localhost",
   user: "root",
-  password: "",
+  password: "root",
+  port: "3307",
   database: "skpdb",
 });
 
