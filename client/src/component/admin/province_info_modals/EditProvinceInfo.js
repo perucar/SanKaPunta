@@ -78,7 +78,7 @@ function EditProvinceInfo(props) {
             <Form.Control as="textarea" rows={10} name="description" type="text" value={data.description} onChange={(event) => {handleChange(event)}}/>
 
             <Form.Label>Image URL</Form.Label>
-            <Form.Control  name="image" type="text" onChange={(event) => {handleChange(event)}}/>
+            <Form.Control  name="image" type="text" value={data.image} onChange={(event) => {handleChange(event)}}/>
 
             <Form.Group className="mb-3" controlId="formCategory">
                 <Form.Label>Category</Form.Label>
