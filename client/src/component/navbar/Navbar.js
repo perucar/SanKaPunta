@@ -1,18 +1,31 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import logo from './../../images/ic-logov2.png';
+import './navbar.css';
+import { Outlet, Link } from "react-router-dom";
+import SuggestionInputSearch from 'suggestion-react-input-search'; 
 
-const Navbar = () => {
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
+
+const Navbar = (props) => {
 
     const [user, setUser] = useState(JSON.parse(localStorage.getItem('userToken')));
+    const [search, setSearch] = useState("")
+
+    const [city, setCity] = useState("")
+
+
+    const onSearch = () => {
+      props.changeCat(city.label)
+      console.log("city", city.label);
+    }
 
     const logout = () => {
       localStorage.removeItem("userToken");
       window.location.reload();
     };
     
-    const getCurrentUser = () => {
-      return JSON.parse(localStorage.getItem("userToken"));
-    };
+
   return (
     <>
         <nav className="navbar navbar-expand-sm bg-success navbar-dark p-0" >
@@ -32,26 +45,79 @@ const Navbar = () => {
           <li className="nav-item">
             <a className="nav-link" href="#">Features</a>
           </li>
+
+          { user && 
           <li className="nav-item">
-            <a className="nav-link" href="#">Pricing</a>
-          </li>
+            <Link className="nav-link" to='/signup'>My Account</Link>
+          </li> 
+          }
+
+          
+        { !user && 
+          <li className="nav-item">
+            <Link className="nav-link" to="/signup">Register</Link>
+          </li> 
+          }
         </ul>
       </div>
+ 
+        <div className="d-flex">
+              <Autocomplete
+                style={{ backgroundColor: '#fff' }}
+                disablePortal
+                id="combo-box-demo"
+                options={
+                  props.mapData?.getProvinces?.map(function(row) {
+                    return { label : row.name }
+                  })
+                }
+                sx={{ width: 300 }}
+                renderInput={(params) => {
+                  return <TextField {...params} label="City" /> 
+                }}
 
-        <form className="d-flex">
-          <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-          <button className="btn btn-light me-4" type="submit">Search</button>
+                onChange={(event, newValue) => setCity(newValue) }
+              />
+              {/* <input type="text" className="form-control me-2"  value={search} onChange={handleSearch} /> */}
+              <button className="btn btn-light me-4" onClick={() => onSearch(search)}> Search </button>
+          
+            <div className="dropdown">
+              {props.mapData?.getProvinces
+                .filter((item) => {
+                  const searchTerm = search.toLowerCase();
+                  const fullName = item.name.toLowerCase();
+
+                  return (
+                    searchTerm &&
+                    fullName.startsWith(searchTerm) &&
+                    fullName !== searchTerm
+                  );
+                })
+                .slice(0, 10)
+                .map((item) => (
+                  <div
+                    onClick={() => onSearch(item.name)}
+                    className="dropdown-row"
+                    key={item.name}
+                  >
+                    {item.name}
+                  </div>
+                ))}
+            </div>
+
 
           { user ? 
             <button type="button" className="btn btn-danger btn-sm m-2" onClick={logout}>
               Logout
             </button>
           :
+          <>     
             <button type="button" className="btn btn-primary btn-sm m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               Login
             </button>
+          </>
           }
-        </form>
+        </div>
       </div>
     </nav>
     

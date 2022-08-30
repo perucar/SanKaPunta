@@ -1,12 +1,9 @@
 import React, {useState} from 'react'
-import {useQuery} from '@apollo/client';
-import { LOAD_DATA } from './../../graphql/Queries'
 import Map from './../map/Map';
-import elnido from './../../images/palawan.jpg'
 
-const MapPage = () => {
+const MapPage = (props) => {
 
-    const {error, loading, data} = useQuery(LOAD_DATA);
+    
     const [selectedCat, setSelectedCat] = useState(null)
 
     const testLink = 'https://www.discoverthephilippines.com/wp-content/uploads/2021/12/article-cover-photo-guide-batangas-city.jpg'
@@ -17,22 +14,22 @@ const MapPage = () => {
             <div className="col-md-3">
 
                 <div className="card" style={{ width: "18rem;"}}>
-                <img src={testLink} className="card-img-top" alt="..." />
+                <img src={selectedCat?.image ? selectedCat?.image : "https://discountseries.com/wp-content/uploads/2017/09/default.jpg"} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5>Province Name:</h5> <span className='card-text text-center'>{selectedCat?.name}</span><hr />
-                    <h5>Region:<span className='card-text'> 1</span></h5> 
+                    <h5>Region ID:<span className='card-text'>{selectedCat?.region_id}</span></h5> 
                     <h5>Category:</h5> <span className='card-text'>Test category</span>
                     <h5>Visit:</h5> <span className='card-text'><a href="#">This site</a></span>
-                    <h5>Description:</h5> <span className='card-text'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut nostrum dolorum culpa dignissimos optio non quod ipsam error nesciunt, maiores vitae ex corporis, hic veritatis!</span>
+                    <h5>Trivia:</h5> <span className='card-text'>{selectedCat?.description}</span>
                     
                 </div>
                 </div>
                 
             </div>
             <div className="col-md-9">
-            <div style={{ width: "100vw", height: "100vh" }}>
+            <div style={{ width: "70vw", height: "100vh" }}>
                 <Map 
-                provinces={data} 
+                provinces={props.data} 
                 setSelectedCat={setSelectedCat}
                 selectedCat={selectedCat}
                 />

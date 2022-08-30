@@ -9,7 +9,7 @@ const getProvinces = async (_, args) => {
     .then(data => {
         response = data;
     })
-
+   // console.log(response)
     return response
 
 }
@@ -27,7 +27,20 @@ const getProvinceById = async (_, args) => {
     return response;
 }
 
+const getProvinceByName = async (_, args) => {
+     let response = [];
+    
+    await fetch(`${baseURL}/provinces/city/${args.city}`).then(res => res.json())
+    .then(data => {
+        response = data
+    })
+
+    return response;
+}
+
+
 module.exports = {
     getProvinces,
-    getProvinceById
+    getProvinceById,
+    getProvinceByName,
 }
