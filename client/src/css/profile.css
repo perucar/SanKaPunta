@@ -1,0 +1,25 @@
+
+body {
+    font-family: Montserrat, Roboto, sans-serif;
+    background-color: #eeeeee;
+} 
+
+div.scroll {
+  margin:4px, 4px;
+  padding:4px;
+  width: 750px;
+  height: 460px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
+
+div.scrolltab {
+  margin:4px, 4px;
+  padding:4px;
+  width: 750px;
+  height: 460px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align:justify;
+}
