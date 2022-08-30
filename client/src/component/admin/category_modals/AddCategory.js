@@ -14,6 +14,34 @@ function AddCategory(props) {
         updated_by: ""
     })
 
+    // Handle saving changes to region item
+    const handleAddCategory = async () => {
+      const dataToSend = {
+        name: data.name,
+        updated_by: /*Change to current user*/ "default",
+        date_updated: new Date().toISOString().slice(0, 19).replace('T', ' '),
+        created_by: /*Change to current user*/ "default",
+        date_created: new Date().toISOString().slice(0, 19).replace('T', ' ')
+      }
+      const rawData = await fetch('http://localhost:5050/categories', {
+        method: 'POST',
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(dataToSend)
+      })
+
+      const transformedData = await rawData.json();
+      console.log(transformedData);
+
+      // Put appropriate action based on status received
+      if (transformedData.status === '200') {
+        window.location.reload();
+      } else {
+        alert("Item was not created. Please try again.")
+      }
+    }
+
     // Fields change handler    
     const handleChange = (event) => {
         setData({...data, [event.target.name]: event.target.value})
@@ -42,7 +70,7 @@ function AddCategory(props) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={() => window.location.reload()}>
+          <Button variant="primary" onClick={handleAddCategory}>
             Add
           </Button>
         </Modal.Footer>
